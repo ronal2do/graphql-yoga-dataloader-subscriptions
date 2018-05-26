@@ -1,7 +1,16 @@
 import config from 'dotenv'
 import { PubSub } from 'graphql-yoga'
+import * as loaders from './loaders'
 
 config.config()
+
+export const dataloaders = Object.keys(loaders).reduce(
+  (dataloaders, loaderKey) => ({
+    ...dataloaders,
+    [loaderKey]: loaders[loaderKey].getLoader()
+  }),
+  {}
+)
 
 export const pubsub = new PubSub()
 export const PORT = process.env.PORT || 8080
