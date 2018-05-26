@@ -2,7 +2,7 @@
 
 import mongoose from 'mongoose'
 
-import { MONGO_URI, MONGO_DATABASE_NAME } from './serverConfig'
+import { MONGO_URI, MONGO_DATABASE_NAME } from './config'
 
 export const connectDatabase = () => {
   return new Promise((resolve, reject) => {

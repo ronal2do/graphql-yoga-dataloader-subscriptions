@@ -2,9 +2,9 @@
 
 import { GraphQLSchema } from 'graphql'
 
-import RootQuery from './queries/RootQuery'
-import RootMutation from './mutations/RootMutation'
-import RootSubscription from './subscriptions/RootSubscription'
+import RootQuery from './queries'
+import RootMutation from './mutations'
+import RootSubscription from './subscriptions'
 
 const schemaDefinition: Object = {
   query: RootQuery,

@@ -1,12 +1,10 @@
 // @flow
 import { GraphQLServer } from 'graphql-yoga'
-import { pubsub, dataloaders } from './serverConfig'
 
+import { pubsub, dataloaders, BASE_URI, PORT } from './config'
 import { schema } from './schemas'
 import * as models from './models'
 import { connectDatabase } from './database'
-
-import { BASE_URI, PORT } from './serverConfig'
 ;(async () => {
   try {
     const info = await connectDatabase()

@@ -1,7 +1,7 @@
 // @flow
 import { GraphQLNonNull, GraphQLString, GraphQLInt } from 'graphql'
 
-import { pubsub } from '../serverConfig'
+import { pubsub } from '../config'
 import GraphQLCat from '../outputs/Cat'
 
 import type { GraphqlContextType } from '../types/GraphqlContextType'
