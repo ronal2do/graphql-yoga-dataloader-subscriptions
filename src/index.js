@@ -2,7 +2,7 @@
 import { GraphQLServer } from 'graphql-yoga'
 import { pubsub, dataloaders } from './serverConfig'
 
-import { schema } from './schema'
+import { schema } from './schemas'
 import * as models from './models'
 import { connectDatabase } from './database'
 
