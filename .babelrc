@@ -1,7 +1,3 @@
 {
-  "presets": [
-    "latest",
-    "stage-2",
-    "flow"
-  ]
+  "presets": ["latest", "stage-2", "flow"]
 }
