@@ -7,8 +7,8 @@ import {
 } from '@entria/graphql-mongoose-loader'
 
 import type { ConnectionArguments } from 'graphql-relay'
-import type { GraphQLContext } from '../TypeDefinition'
-import type { CatType } from '../types/Cat'
+import type { Cat as CatType } from '../types/Cat'
+import type { GraphqlContextType } from '../types/GraphqlContextType'
 
 export default class Cat {
   id: string
@@ -20,9 +20,8 @@ export default class Cat {
   avatarUrl: string
   age: number
 
-  constructor (data: CatType, { user }: GraphQLContext) {
+  constructor (data: CatType, { cat }: GraphqlContextType) {
     this.id = data.id
-    this._id = data._id
     this.name = data.name
     this.nickName = data.nickName
     this.description = data.description
@@ -34,15 +33,16 @@ export default class Cat {
 }
 
 export const getLoader = () =>
+  // $FlowFixMe
   new DataLoader(ids => mongooseLoader(CatModel, ids))
 
 const viewerCanSee = (context, data) => {
-  // Anyone can see another user
+  // Anyone can see another cat
   return true
 }
 
 export const load = async (
-  context: GraphQLContext,
+  context: GraphqlContextType,
   id: string
 ): Promise<?Cat> => {
   if (!id) {
@@ -58,21 +58,18 @@ export const load = async (
   return viewerCanSee(context, data) ? new Cat(data, context) : null
 }
 
-export const clearCache = ({ dataloaders }: GraphQLContext, id: string) => {
-  return dataloaders.CatLoader.clear(id.toString())
-}
+export const clearCache = ({ dataloaders }: GraphqlContextType, id: string) =>
+  dataloaders.CatLoader.clear(id.toString())
 
 export const loadCats = async (
-  context: GraphQLContext,
+  context: GraphqlContextType,
   args: ConnectionArguments
 ) => {
-  const where = args.search
-    ? { name: { $regex: new RegExp(`^${args.search}`, 'ig') } }
-    : {}
-  const users = CatModel.find(where, { _id: 1 }).sort({ createdAt: -1 })
+  const { Cat } = context.models
+  const cursor = Cat.find().sort({ createdAt: -1 })
 
   return connectionFromMongoCursor({
-    cursor: users,
+    cursor,
     context,
     args,
     loader: load
