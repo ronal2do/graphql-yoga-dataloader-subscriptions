@@ -1,9 +1,9 @@
 // @flow
 import { GraphQLServer } from 'graphql-yoga'
-import { pubsub } from './serverConfig'
+import { pubsub, dataloaders } from './serverConfig'
 
 import { schema } from './schema'
-import models from './models/index'
+import * as models from './models'
 import { connectDatabase } from './database'
 
 import { BASE_URI, PORT } from './serverConfig'
@@ -20,7 +20,8 @@ import { BASE_URI, PORT } from './serverConfig'
     schema,
     context: {
       pubsub,
-      models
+      models,
+      dataloaders
     }
   })
 

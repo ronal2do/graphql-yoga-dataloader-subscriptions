@@ -23,6 +23,7 @@
     "compression": "^1.7.1",
     "cors": "^2.8.4",
     "createServer": "^3.0.0",
+    "dataloader": "^1.4.0",
     "dotenv": "^5.0.1",
     "express": "^4.16.2",
     "graphql": "^0.13.2",
