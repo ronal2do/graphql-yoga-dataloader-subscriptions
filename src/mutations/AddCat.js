@@ -37,13 +37,12 @@ export default {
   resolve: async (
     _: mixed,
     args: argsType,
-    { RootModel }: GraphqlContextType
+    { models }: GraphqlContextType
   ): Promise<CatType> => {
     const payload = {
-      ...args,
-      createdAt: new Date().toISOString()
+      ...args
     }
-    const cat = await new RootModel.Cat(payload).save()
+    const cat = await new models.Cat(payload).save()
 
     pubsub.publish('newCat', cat)
     return cat

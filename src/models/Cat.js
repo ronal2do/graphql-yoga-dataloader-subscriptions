@@ -1,16 +1,37 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
-const CatSchema = mongoose.Schema({
-  name: String,
-  nickName: String,
-  description: String,
-  createdAt: String,
-  avatarUrl: String,
-  age: Number,
-});
+const Schema = mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true
+    },
+    nickName: {
+      type: String,
+      required: true
+    },
+    description: {
+      type: String,
+      required: true
+    },
+    avatarUrl: {
+      type: String,
+      required: true
+    },
+    age: {
+      type: Number,
+      required: true
+    }
+  },
+  {
+    timestamps: {
+      createdAt: 'createdAt',
+      updatedAt: 'updatedAt'
+    },
+    collection: 'cats'
+  }
+)
 
-export const sortArrayByDate = array => {
-  return array.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-};
+Schema.index({ description: 'text', name: 'text' })
 
-export default mongoose.model('Cat', CatSchema);
+export default mongoose.model('Cat', Schema)

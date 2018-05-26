@@ -2,8 +2,8 @@
 import { GraphQLServer } from 'graphql-yoga'
 import { pubsub } from './serverConfig'
 
-import Schema from './Schema'
-import RootModel from './models/RootModel'
+import { schema } from './schema'
+import models from './models/index'
 import { connectDatabase } from './database'
 
 import { BASE_URI, PORT } from './serverConfig'
@@ -17,8 +17,11 @@ import { BASE_URI, PORT } from './serverConfig'
   }
 
   const server = new GraphQLServer({
-    schema: Schema,
-    context: { pubsub, RootModel }
+    schema,
+    context: {
+      pubsub,
+      models
+    }
   })
 
   server.start({ port: PORT, cacheControl: true }, () =>

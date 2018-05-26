@@ -9,6 +9,10 @@
     core-js "^2.5.6"
     regenerator-runtime "^0.11.1"
 
+"@entria/graphql-mongoose-loader@^1.8.1":
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/@entria/graphql-mongoose-loader/-/graphql-mongoose-loader-1.8.1.tgz#84dd689eda7e3a3127f1a4ffb34fe71f6bbc30bc"
+
 "@types/body-parser@*":
   version "1.17.0"
   resolved "https://registry.yarnpkg.com/@types/body-parser/-/body-parser-1.17.0.tgz#9f5c9d9bd04bb54be32d5eb9fc0d8c974e6cf58c"

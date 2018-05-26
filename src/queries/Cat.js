@@ -21,9 +21,10 @@ export default {
   resolve: async (
     _: mixed,
     { id }: argsType,
-    { RootModel }: GraphqlContextType
+    { models }: GraphqlContextType
   ): Promise<CatType> => {
-    const cats = await RootModel.Cat.find({ _id: id })
+    const cats = await models.Cat.find({ _id: id })
+
     return cats[0]
   }
 }

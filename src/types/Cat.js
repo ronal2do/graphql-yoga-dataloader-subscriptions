@@ -6,6 +6,7 @@ export type Cat = {|
   nickName: string,
   description: string,
   createdAt: string,
+  updatedAt: string,
   avatarUrl: string,
   age: number,
-|};
+|}

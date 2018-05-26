@@ -12,4 +12,4 @@ const schemaDefinition: Object = {
   subscription: RootSubscription
 }
 
-export default new GraphQLSchema(schemaDefinition)
+export const schema = new GraphQLSchema(schemaDefinition)
