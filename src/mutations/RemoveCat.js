@@ -3,7 +3,7 @@
 import { GraphQLNonNull, GraphQLID } from 'graphql'
 
 import { pubsub } from '../config'
-import GraphQLCat from '../outputs/Cat'
+import GraphQLCat from '../entity/Cat'
 
 import type { GraphqlContextType } from '../types/GraphqlContextType'
 import type { Cat as CatType } from '../types/Cat'

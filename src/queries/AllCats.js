@@ -1,13 +1,19 @@
 // @flow
-
+import { GraphQLInt } from 'graphql'
 import { connectionDefinitions, connectionArgs } from 'graphql-relay'
 
-import GraphQLCat from '../outputs/Cat'
+import GraphQLCat from '../entity/Cat'
 import { CatLoader } from '../loaders'
 import type { GraphqlContextType } from '../types/GraphqlContextType'
 
 const { connectionType: AllCatsConnection } = connectionDefinitions({
-  nodeType: GraphQLCat
+  name: 'Cat',
+  nodeType: GraphQLCat,
+  connectionFields: {
+    count: {
+      type: GraphQLInt
+    }
+  }
 })
 
 export default {

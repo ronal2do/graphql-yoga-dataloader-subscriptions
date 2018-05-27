@@ -6,6 +6,7 @@
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-jest": "^23.0.0",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-latest": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
@@ -13,8 +14,12 @@
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.12.0",
     "flow-bin": "^0.73.0",
+    "jest": "^23.0.0",
+    "jest-environment-node": "^23.0.0",
     "nodemon": "^1.17.5",
-    "prettier": "^1.12.1"
+    "prettier": "^1.12.1",
+    "mongodb-memory-server": "^1.7.4",
+    "graphql-request": "^1.6.0"
   },
   "dependencies": {
     "@entria/graphql-mongoose-loader": "^1.8.1",
@@ -30,6 +35,15 @@
     "start": "nodemon --exec babel-node src/index.js",
     "prettier":
       "prettier --single-quote --trailing-comma all --write 'src/**/*.js'",
-    "typecheck": "flow check --color=always"
+    "flow": "flow check --color=always",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "jest": {
+    "testEnvironment": "<rootDir>/test/mongodb",
+    "testPathIgnorePatterns": ["/node_modules/", "./dist"],
+    "coverageReporters": ["lcov", "html"],
+    "coverageDirectory": "./coverage/",
+    "resetModules": true
   }
 }

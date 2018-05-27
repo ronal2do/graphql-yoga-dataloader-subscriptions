@@ -1,7 +1,7 @@
 // @flow
 
 import { pubsub } from '../config'
-import GraphQLCat from '../outputs/Cat'
+import GraphQLCat from '../entity/Cat'
 
 import type { Cat } from '../types/Cat'
 
