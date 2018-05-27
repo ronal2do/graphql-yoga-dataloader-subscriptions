@@ -4,7 +4,7 @@ Simple and super scalable GraphQL Subscriptions server with MongoDB as a databas
 
 ## How it works?
 
-![GraphQL Subscriptions](https://media.giphy.com/media/3ohs7PV2Vn1rYgthVm/giphy.gif)
+![GraphQL Subscriptions](https://media.giphy.com/media/wK2PEoXM41oROSBBc6/giphy.gif)
 
 ## Before you start
 First rename `.env-sample` file to `.env`. It contains all default values for proper work on your local machine. In case you going to run GraphQL server in production you need to provide relevant MongoDB URL and database name.
